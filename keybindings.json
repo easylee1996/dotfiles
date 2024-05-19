@@ -1,0 +1,383 @@
+[
+  // ================================================================================================
+  // = window =====================================
+  // ================================================================================================
+  // == open and close
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.closeWindow"
+  },
+  // == mostly useful Area
+  {
+    "key": "alt+,",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "alt+.",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "alt+/",
+
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  // spilt editor
+  {
+    "key": "cmd+\\",
+    "command": "workbench.action.splitEditorRight"
+  },
+  {
+    "key": "cmd+shift+\\",
+    "command": "workbench.action.splitEditorDown"
+  },
+  // move in spilt editor area
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  // move in tabs
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.previousEditor",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "tab",
+    "command": "workbench.action.nextEditor",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  // move in useful panel(plugins)
+  {
+    "key": "alt+p alt+u",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "alt+p alt+y",
+    "command": "workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+
+  // ================================================================================================
+  // = Explore =====================================
+  // ================================================================================================
+  // == crud
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "c",
+    "command": "filesExplorer.copy",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "v",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+  },
+  // delete file everywhere
+  {
+    "key": "shift+cmd+backspace",
+    "command": "deleteFile"
+  },
+  // show active file in explorer
+  {
+    "key": "ctrl+f",
+    "command": "workbench.files.action.showActiveFileInExplorer"
+  },
+  // reveal file in Finder
+  {
+    "key": "ctrl+shift+f",
+    "command": "revealFileInOS"
+  },
+  // fold
+  {
+    "key": "cmd+[",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
+  },
+
+  // ================================================================================================
+  // = Terminal =====================================
+  // ================================================================================================
+  // split terminal
+  {
+    "key": "cmd+\\",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  // new terminal
+  {
+    "key": "cmd+/",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  // kill terminal
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "shift+ctrl+/",
+    "command": "workbench.action.terminal.killAll"
+  },
+  // move left or right in split terminal
+  {
+    "key": "shift+cmd+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  // move up or down in tab terminal
+  {
+    "key": "shift+cmd+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+
+  // ================================================================================================
+  // = Editor Area =====================================
+  // ================================================================================================
+  // move line up or down
+  {
+    "key": "cmd+shift+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // == fold
+  {
+    "key": "cmd+[",
+    "command": "editor.fold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+
+  {
+    "key": "cmd+]",
+    "command": "editor.unfold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+
+  {
+    "key": "shift+cmd+[",
+    "command": "editor.foldAll",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+
+  {
+    "key": "shift+cmd+]",
+    "command": "editor.unfoldAll",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+
+  // ================================================================================================
+  // = Plugins(vscode default and extension) =====================================
+  // ================================================================================================
+  // == Debug
+  {
+    "key": "cmd+1",
+    "command": "editor.debug.action.toggleBreakpoint",
+    "when": "debuggersAvailable && editorTextFocus"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "cmd+3",
+    "command": "workbench.action.debug.continue",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "alt+y alt+o",
+    "command": "workbench.action.debug.stepOver",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "alt+y down",
+    "command": "workbench.action.debug.stepInto",
+    "when": "debugState != 'inactive'"
+  },
+  {
+    "key": "alt+y up",
+    "command": "workbench.action.debug.stepOut",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "alt+y alt+y",
+    "command": "workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "alt+y alt+u",
+    "command": "workbench.action.debug.stop",
+    "when": "inDebugMode && !focusedSessionIsAttach"
+  },
+  {
+    "key": "alt+y alt+i",
+    "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
+  },
+  {
+    "key": "alt+'",
+    "command": "workbench.debug.action.toggleRepl",
+    "when": "workbench.panel.repl.view.active"
+  },
+
+  // == CodeGeex
+  {
+    "key": "alt+;",
+    "command": "codegeex.askcodegeex"
+  },
+  {
+    "key": "alt+i alt+i",
+    "command": "codegeex.askcodegeex.explain"
+  },
+  {
+    "key": "alt+i alt+y",
+    "command": "codegeex.expandInlineChat"
+  },
+  {
+    "key": "alt+i alt+u",
+    "command": "codegeex.askcodegeex.comment"
+  },
+  {
+    "key": "alt+i alt+o",
+    "command": "codegeex.review"
+  },
+
+  // == Turbo console log
+  {
+    "key": "ctrl+cmd+/",
+    "command": "turboConsoleLog.displayLogMessage"
+  },
+
+  // == GIT
+  {
+    "key": "alt+u alt+y",
+    "command": "git.commitStaged"
+  },
+  {
+    "key": "alt+u alt+u",
+    "command": "git.pull"
+  },
+  {
+    "key": "alt+u alt+i",
+    "command": "git.push"
+  },
+  {
+    "key": "alt+u alt+o",
+    "command": "git.openChange"
+  },
+  {
+    "key": "alt+u alt+p",
+    "command": "git.refresh"
+  },
+  {
+    "key": "alt+u up",
+    "command": "git.stage"
+  },
+  {
+    "key": "alt+u down",
+    "command": "git.unstage"
+  },
+  // discard the active file's changes
+  {
+    "key": "alt+u alt+backspace",
+    "command": "git.clean"
+  },
+  {
+    "key": "alt+u alt+b",
+    "command": "git.checkout"
+  },
+  // apply the stash
+  {
+    "key": "alt+u alt+m",
+    "command": "git.stashApply"
+  },
+  // compare with recent versions
+  {
+    "key": "alt+u left",
+    "command": "gitlens.diffWithPrevious",
+    "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+u left",
+    "command": "gitlens.diffWithPreviousInDiffLeft",
+    "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+u left",
+    "command": "gitlens.diffWithPreviousInDiffRight",
+    "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
+  },
+  {
+    "key": "alt+u right",
+    "command": "gitlens.diffWithNext",
+    "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  },
+  {
+    "key": "alt+u right",
+    "command": "gitlens.diffWithNextInDiffLeft",
+    "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  },
+  {
+    "key": "alt+u right",
+    "command": "gitlens.diffWithNextInDiffRight",
+    "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
+  }
+]
