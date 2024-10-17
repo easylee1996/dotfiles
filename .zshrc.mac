@@ -1,27 +1,23 @@
 # 禁用插件目录安全检查
 ZSH_DISABLE_COMPFIX=true
 
-
-export ZSH="$HOME/.oh-my-zsh"
-export HF_ENDPOINT="https://hf-mirror.com"
-export Documents="D:/"
-
 # git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 # ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-# spaceship-prompt主题windows配置有点问题，暂时用powerlevel10k
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# 这里添加了文件夹，如果不想写文件夹名称，可以使用ln软连接把文件夹链接到oh-my-zsh/custom/themes目录下
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="spaceship"
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
-# Mac和linux还可以安装：autojump/copydir/copyfile，windows先不折腾了，有空有需要可以再折腾
 plugins=(
   git
   zsh-autosuggestions
+  autojump
+  copydir
+  copyfile
   zsh-syntax-highlighting
   zsh-z
 )
+
+
 
 # ================================================================================================
 # = Node Package Manager =====================================
@@ -124,26 +120,20 @@ function gdc() {
 # = Directories =====================================
 # ================================================================================================
 # I put
-# `$Documents/pj/mypj` for my projects
-# `$Documents/pj/fork` for forks
-# `$Documents/pj/reproduction` for reproductions
-
-
+# `~/i` for my projects
+# `~/f` for forks
+# `~/r` for reproductions
 
 function i() {
-  cd $Documents/pj/mypj/$1
+  cd ~/i/$1
 }
 
-function repro() {
-  cd $Documents/pj/reproduction/$1
+function repros() {
+  cd ~/r/$1
 }
 
-function fork() {
-  cd $Documents/pj/fork/$1
-}
-
-function work() {
-  open $Documents/work/$1
+function forks() {
+  cd ~/f/$1
 }
 
 function pr() {
@@ -159,7 +149,6 @@ function dir() {
 }
 
 function clone() {
-  # is not empty: -z
   if [[ -z $2 ]] then
     hub clone "$@" && cd "$(basename "$1" .git)"
   else
@@ -167,17 +156,17 @@ function clone() {
   fi
 }
 
-# Clone to $Documents/pj/mypj and cd to it
+# Clone to ~/i and cd to it
 function clonei() {
   i && clone "$@" && code . && cd ~2
 }
 
 function cloner() {
-  repro && clone "$@" && code . && cd ~2
+  repros && clone "$@" && code . && cd ~2
 }
 
 function clonef() {
-  fork && clone "$@" && code . && cd ~2
+  forks && clone "$@" && code . && cd ~2
 }
 
 function codei() {
@@ -191,24 +180,3 @@ function serve() {
     live-server $1
   fi
 }
-
-# Default Proxy
-export http_proxy=http://127.0.0.1:7890
-export https_proxy=http://127.0.0.1:7890
-export all_proxy=socks5://127.0.0.1:7890
-
-# https://ohmyz.sh/
-# tip: need to put after path
-source $ZSH/oh-my-zsh.sh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# windows环境下，conda虚拟环境，必须添加下面的配置，才可以正常使用虚拟环境，默认使用conda init zsh是错误的
-# @see {@link https://github.com/conda/conda/issues/9922#issuecomment-1361695031 github} 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval "$('/c/ProgramData/miniconda3/Scripts/conda.exe' 'shell.zsh' 'hook' | sed -e 's/"$CONDA_EXE" $_CE_M $_CE_CONDA "$@"/"$CONDA_EXE" $_CE_M $_CE_CONDA "$@" | tr -d \x27\\r\x27/g' | tr -d '\r')"
-# <<< conda initialize <<<
-
