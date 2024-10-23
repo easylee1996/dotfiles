@@ -15,17 +15,21 @@
     "key": "alt+shift+w",
     "command": "workbench.action.closeWindow"
   },
+  {
+    "key": "ctrl+escape",
+    "command": "workbench.action.showNextWindowTab"
+  },
   // == mostly useful Area
   {
-    "key": "ctrl+shift+alt+,",
+    "key": "alt+,",
     "command": "workbench.action.focusActiveEditorGroup"
   },
   {
-    "key": "ctrl+shift+alt+.",
+    "key": "alt+.",
     "command": "workbench.view.explorer"
   },
   {
-    "key": "ctrl+shift+alt+/",
+    "key": "alt+/",
     "command": "workbench.action.terminal.toggleTerminal"
   },
   // spilt editor
@@ -41,11 +45,6 @@
   {
     "key": "ctrl+shift+h",
     "command": "workbench.action.focusLeftGroup",
-    "when": "vim.mode == 'Normal' && editorTextFocus"
-  },
-  {
-    "key": "ctrl+shift+l",
-    "command": "workbench.action.focusRightGroup",
     "when": "vim.mode == 'Normal' && editorTextFocus"
   },
   {
@@ -99,7 +98,7 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "d",
+    "key": "backspace",
     "command": "deleteFile",
     "when": "filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
@@ -120,7 +119,7 @@
   },
   // show active file in explorer
   {
-    "key": "alt+f",
+    "key": "shift+ctrl+l",
     "command": "workbench.files.action.showActiveFileInExplorer"
   },
   // reveal file in Finder
@@ -151,6 +150,10 @@
   },
   // kill terminal
   {
+    "key": "alt+/",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
     "key": "shift+alt+/",
     "command": "workbench.action.terminal.killAll"
   },
@@ -160,12 +163,6 @@
     "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
-  {
-    "key": "shift+ctrl+l",
-    "command": "workbench.action.terminal.focusNextPane",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  // move up or down in tab terminal
   {
     "key": "shift+ctrl+j",
     "command": "workbench.action.terminal.focusNext",
@@ -181,12 +178,12 @@
   // ================================================================================================
   // move line up or down
   {
-    "key": "ctrl+shift+j",
+    "key": "alt+shift+j",
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+shift+k",
+    "key": "alt+shift+k",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
@@ -216,48 +213,34 @@
   // ================================================================================================
   // == Debug
   {
-    "key": "ctrl+1",
+    "key": "f8",
     "command": "editor.debug.action.toggleBreakpoint",
     "when": "debuggersAvailable && editorTextFocus"
   },
   {
-    "key": "ctrl+2",
-    "command": "workbench.action.debug.restart",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "ctrl+3",
+    "key": "f3",
     "command": "workbench.action.debug.continue",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "alt+y alt+o",
+    "key": "f4",
     "command": "workbench.action.debug.stepOver",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "alt+y down",
+    "key": "f5",
     "command": "workbench.action.debug.stepInto",
     "when": "debugState != 'inactive'"
   },
   {
-    "key": "alt+y up",
+    "key": "f6",
     "command": "workbench.action.debug.stepOut",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "alt+y alt+y",
+    "key": "f2",
     "command": "workbench.action.debug.start",
-    "when": "debuggersAvailable && debugState == 'inactive'"
-  },
-  {
-    "key": "alt+y alt+u",
-    "command": "workbench.action.debug.stop",
-    "when": "inDebugMode && !focusedSessionIsAttach"
-  },
-  {
-    "key": "alt+y alt+i",
-    "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
+    "when": "debuggersAvailable && debugState == 'inactive' && !notebookCellEditable"
   },
   {
     "key": "alt+'",
@@ -266,26 +249,13 @@
   },
   // == CodeGeex
   {
-    "key": "alt+;",
-    "command": "codegeex.askcodegeex"
-  },
-  {
-    "key": "alt+i alt+i",
-    "command": "codegeex.askcodegeex.explain"
-  },
-  {
     "key": "alt+i alt+y",
-    "command": "codegeex.expandInlineChat"
+    "command": "codegeex.askcodegeex.explain"
   },
   {
     "key": "alt+i alt+u",
     "command": "codegeex.askcodegeex.comment"
   },
-  {
-    "key": "alt+i alt+o",
-    "command": "codegeex.review"
-  },
-  // == Turbo console log
   {
     "key": "alt+ctrl+/",
     "command": "turboConsoleLog.displayLogMessage"
@@ -306,10 +276,6 @@
   {
     "key": "alt+u alt+o",
     "command": "git.openChange"
-  },
-  {
-    "key": "alt+u alt+p",
-    "command": "git.refresh"
   },
   {
     "key": "alt+u up",
@@ -335,21 +301,6 @@
   },
   // compare with recent versions
   {
-    "key": "alt+u left",
-    "command": "gitlens.diffWithPrevious",
-    "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
-  },
-  {
-    "key": "alt+u left",
-    "command": "gitlens.diffWithPreviousInDiffLeft",
-    "when": "editorTextFocus && isInDiffEditor && !isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
-  },
-  {
-    "key": "alt+u left",
-    "command": "gitlens.diffWithPreviousInDiffRight",
-    "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /tracked/"
-  },
-  {
     "key": "alt+u right",
     "command": "gitlens.diffWithNext",
     "when": "editorTextFocus && !isInDiffEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
@@ -364,9 +315,308 @@
     "command": "gitlens.diffWithNextInDiffRight",
     "when": "editorTextFocus && isInDiffRightEditor && config.gitlens.keymap == 'chorded' && gitlens:activeFileStatus =~ /revision/"
   },
-  // clear conflict keyboard shortcut
   {
-    "key": "alt+oem_period",
-    "command": "-auto-close-tag.closeTag"
+    "key": "alt+w",
+    "command": "-extension.vim_alt+w",
+    "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "workbench.action.zoomReset"
+  },
+  {
+    "key": "ctrl+numpad0",
+    "command": "-workbench.action.zoomReset"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "-workbench.action.focusSideBar"
+  },
+  {
+    "key": "ctrl+backspace",
+    "command": "editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+ctrl+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+e",
+    "command": "-cursorLineEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "cursorLineStart",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+a",
+    "command": "-cursorLineStart",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+ctrl+l",
+    "command": "-tongyi.show.panel",
+    "when": "TongyiLingMa.Chat.active"
+  },
+  {
+    "key": "shift+ctrl+l",
+    "command": "-selectAllSearchEditorMatches",
+    "when": "inSearchEditor"
+  },
+  {
+    "key": "shift+ctrl+l",
+    "command": "-editor.action.selectHighlights",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+ctrl+l",
+    "command": "-addCursorsAtSearchResults",
+    "when": "fileMatchOrMatchFocus && searchViewletVisible"
+  },
+  {
+    "key": "shift+f6",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "f2",
+    "command": "-editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+enter",
+    "command": "editor.action.insertLineBefore",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+ctrl+enter",
+    "command": "-editor.action.insertLineBefore",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "f1",
+    "command": "-workbench.action.showCommands"
+  },
+  {
+    "key": "f1",
+    "command": "python.execInTerminal-icon"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "f3",
+    "command": "editor.debug.action.goToNextBreakpoint"
+  },
+  {
+    "key": "f7",
+    "command": "editor.debug.action.runToCursor"
+  },
+  {
+    "key": "f7",
+    "command": "-editor.action.accessibleDiffViewer.next",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "f7",
+    "command": "-editor.action.wordHighlight.next",
+    "when": "editorTextFocus && hasWordHighlights"
+  },
+  {
+    "key": "f7",
+    "command": "-inlineChat.moveToNextHunk",
+    "when": "inlineChatHasProvider && inlineChatVisible"
+  },
+  {
+    "key": "f1",
+    "command": "notebook.cell.execute",
+    "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelSourceCount > 0 || inlineChatFocused && notebookCellChatFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code'"
+  },
+  {
+    "key": "alt+enter",
+    "command": "-notebook.cell.execute",
+    "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelSourceCount > 0 || inlineChatFocused && notebookCellChatFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code'"
+  },
+  {
+    "key": "f10",
+    "command": "workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "shift+ctrl+f5",
+    "command": "-workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "f10",
+    "command": "-extension.node-debug.startWithStopOnEntry",
+    "when": "!inDebugMode && debugConfigurationType == 'node' || !inDebugMode && debugConfigurationType == 'pwa-extensionHost' || !inDebugMode && debugConfigurationType == 'pwa-node'"
+  },
+  {
+    "key": "f10",
+    "command": "-workbench.action.debug.stepOver",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "f10",
+    "command": "-jupyter.runByLine",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+  },
+  {
+    "key": "f10",
+    "command": "-jupyter.runByLineNext",
+    "when": "notebookCellResource in 'jupyter.notebookeditor.runByLineCells'"
+  },
+  {
+    "key": "f11",
+    "command": "workbench.action.debug.stop",
+    "when": "inDebugMode && !focusedSessionIsAttach"
+  },
+  {
+    "key": "shift+f5",
+    "command": "-workbench.action.debug.stop",
+    "when": "inDebugMode && !focusedSessionIsAttach"
+  },
+  {
+    "key": "f11",
+    "command": "-workbench.action.debug.stepInto",
+    "when": "debugState != 'inactive'"
+  },
+  {
+    "key": "f11",
+    "command": "-extension.node-debug.startWithStopOnEntry",
+    "when": "!inDebugMode && activeViewlet == 'workbench.view.debug' && debugConfigurationType == 'node' || !inDebugMode && activeViewlet == 'workbench.view.debug' && debugConfigurationType == 'pwa-extensionHost' || !inDebugMode && activeViewlet == 'workbench.view.debug' && debugConfigurationType == 'pwa-node'"
+  },
+  {
+    "key": "f2",
+    "command": "-abracadabra.renameSymbol",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f2",
+    "command": "notebook.cell.clearOutputs",
+    "when": "notebookCellEditable && notebookCellHasOutputs && notebookEditable && notebookEditorFocused"
+  },
+  {
+    "key": "alt+delete",
+    "command": "-notebook.cell.clearOutputs",
+    "when": "notebookCellEditable && notebookCellHasOutputs && notebookEditable && notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "alt+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "alt+b",
+    "command": "-cursorLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+b",
+    "command": "-extension.vim_alt+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "alt+u left",
+    "command": "git.viewFileHistory"
+  },
+  {
+    "key": "alt+h",
+    "command": "-git.viewFileHistory"
+  },
+  {
+    "key": "alt+u alt+p",
+    "command": "git-graph.view"
+  },
+  {
+    "key": "alt+i alt+o",
+    "command": "codegeex.problem.fix"
+  },
+  {
+    "key": "alt+i alt+i",
+    "command": "codegeex.chat.toggle"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "-codegeex.chat.toggle"
+  },
+  {
+    "key": "alt+i alt+y",
+    "command": "aws.amazonq.explainCode",
+    "when": "aws.codewhisperer.connected"
+  },
+  {
+    "key": "alt+ctrl+e",
+    "command": "-aws.amazonq.explainCode",
+    "when": "aws.codewhisperer.connected"
+  },
+  {
+    "key": "alt+;",
+    "command": "workbench.view.extension.amazonq"
+  },
+  {
+    "key": "alt+i alt+o",
+    "command": "aws.amazonq.fixCode",
+    "when": "aws.codewhisperer.connected"
+  },
+  {
+    "key": "alt+ctrl+y",
+    "command": "-aws.amazonq.fixCode",
+    "when": "aws.codewhisperer.connected"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-extension.vim_ctrl+right",
+    "when": "editorTextFocus && vim.active && vim.use<D-right> && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-quickInput.acceptInBackground",
+    "when": "cursorAtEndOfQuickInputBox && inQuickInput && quickInputType == 'quickPick' || inQuickInput && !inputFocus && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+c alt+l",
+    "command": "-commentAnchors.navigateToAnchor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+ctrl+/",
+    "command": "workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "shift+ctrl+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.continue",
+    "when": "debugState == 'stopped'"
   }
 ]
