@@ -21,15 +21,15 @@
   },
   // == mostly useful Area
   {
-    "key": "alt+,",
+    "key": "ctrl+shift+alt+,",
     "command": "workbench.action.focusActiveEditorGroup"
   },
   {
-    "key": "alt+.",
+    "key": "ctrl+shift+alt+.",
     "command": "workbench.view.explorer"
   },
   {
-    "key": "alt+/",
+    "key": "ctrl+shift+alt+/",
     "command": "workbench.action.terminal.toggleTerminal"
   },
   // spilt editor
